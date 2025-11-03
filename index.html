@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Livro da Recepçao</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Sequenciais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Controle de Sequenciais</h1>
+
+        <div class="tab-buttons">
+            <button class="tablink active" onclick="openTab(event, 'Cadastro')">➕ Cadastro / Correção</button>
+            <button class="tablink" onclick="openTab(event, 'LiberacaoCQM')">🔬 Liberação CQM</button>
+            <button class="tablink" onclick="openTab(event, 'Acoes')">🛠️ Ações / Liberação Final</button>
+            <button class="tablink" onclick="openTab(event, 'ListaGeral')">📋 Lista Geral</button>
+        </div>
+
+        <div id="Cadastro" class="tabcontent" style="display: block;">
+            
+            <div id="cadastroRapidoInterface" class="secao destaque-cadastro-rapido">
+                <h2>⚡ Cadastro Rápido Múltiplo</h2>
+                <p class="alerta">Use esta seção para cadastrar múltiplos Sequenciais Digitados de uma vez. **Um por linha.**</p>
+
+                <label for="criadorRapido">Criador (Quem Cadastrou):</label>
+                <input type="text" id="criadorRapido" placeholder="Seu nome" required>
+                
+                <label for="tipoOperacaoRapido">Tipo de Operação Comum:</label>
+                <select id="tipoOperacaoRapido" required>
+                    <option value="">-- Selecione --</option>
+                    <option value="Produto">Produto</option>
+                    <option value="Monitoramento">Monitoramento</option>
+                    <option value="Certificacao">Certificação</option>
+                </select>
+                
+                <label for="sequenciaisLista">Lista de Sequenciais Digitados (Um por linha):</label>
+                <textarea id="sequenciaisLista" placeholder="Seq-001&#10;Seq-002&#10;..."></textarea>
+                
+                <label for="observacoesRapido">Observações Comuns (Opcional):</label>
+                <textarea id="observacoesRapido" placeholder="Observações que se aplicam a todos os itens desta lista..."></textarea>
+
+                <button onclick="iniciarCadastroMultiplo()">Cadastrar Múltiplos Itens</button>
+            </div>
+            
+            <hr>
+
+            <div id="cadastroInterface" class="secao">
+                <h2>➕ Cadastrar Item Único</h2>
+                
+                <label for="criador">Criador (Quem Cadastrou):</label>
+                <input type="text" id="criador" placeholder="Seu nome" required>
+
+                <label for="sequencialDigitado">Sequencial Digitado (Qualquer Caractere):</label>
+                <input type="text" id="sequencialDigitado" placeholder="Digite o sequencial de referência" required>
+                
+                <label for="tipoOperacao">Tipo de Operação:</label>
+                <select id="tipoOperacao" required>
+                    <option value="">-- Selecione --</option>
+                    <option value="Produto">Produto</option>
+                    <option value="Monitoramento">Monitoramento</option>
+                    <option value="Certificacao">Certificação</option>
+                </select>
+                
+                <label for="observacoes">Observações:</label>
+                <textarea id="observacoes" placeholder="Observações adicionais..."></textarea>
+
+                <button onclick="iniciarCadastroUnico()">Cadastrar</button>
+            </div>
+            
+            <hr>
+            
+            <div id="buscaCorrecaoInterface" class="secao">
+                <h2>📝 Buscar para Correção (Sequencial Digitado)</h2>
+
+                <label for="buscaSeqCorrecao">Buscar Sequencial Automático (Ex: 00001/25):</label>
+                <input type="text" id="buscaSeqCorrecao" placeholder="Digite o Sequencial Automático para corrigir">
+                <button onclick="buscarParaCorrecao()">Buscar Item</button>
+
+                <div id="correcaoInterface" class="resultado-acao" style="display:none; margin-top: 15px;">
+                    </div>
+            </div>
+            
+        </div>
+
+        <div id="LiberacaoCQM" class="tabcontent" style="display: none;">
+            <div class="secao">
+                <h2>🔬 Liberação / Aprovação CQM</h2>
+                
+                <label for="liberadorCQMNome">Seu Nome (Aprovador CQM):</label>
+                <input type="text" id="liberadorCQMNome" placeholder="Nome do aprovador do CQM" required>
+                
+                <label for="buscaSeqCQM">Buscar Sequencial Automático (Status: No CQM):</label>
+                <input type="text" id="buscaSeqCQM" placeholder="Digite o Sequencial Automático">
+                
+                <button onclick="buscarParaLiberacaoCQM()">Buscar Sequencial</button>
+
+                <div id="resultadoCQM" class="resultado-acao">
+                    <p>Digite o nome do aprovador e o sequencial para buscar.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="Acoes" class="tabcontent" style="display: none;">
+            <div class="secao">
+                <h2>🛠️ Liberação Final (Recepção)</h2>
+                
+                <label for="liberadorFinalNome">Seu Nome (Recepção/Liberador Final):</label>
+                <input type="text" id="liberadorFinalNome" placeholder="Seu nome para rastreabilidade" required>
+                
+                <label for="buscaSeqAcao">Buscar Sequencial Automático (Status: Na Recepção):</label>
+                <input type="text" id="buscaSeqAcao" placeholder="Digite o Sequencial Automático para buscar">
+                
+                <button onclick="buscarParaAcao()">Buscar Sequencial</button>
+
+                <div id="resultadoAcao" class="resultado-acao">
+                    <p>Digite o nome do liberador e o sequencial para buscar.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="ListaGeral" class="tabcontent" style="display: none;">
+            <div class="secao">
+                <h2>📋 Lista de Cadastros (Todos os Status)</h2>
+                
+                <div class="interface-filtro">
+                    <div>
+                        <label for="filtroColuna">Filtrar por:</label>
+                        <select id="filtroColuna" onchange="aplicarFiltro()">
+                            <option value="todos">Todas as Colunas</option>
+                            <option value="nr">NR (Chave)</option>
+                            <option value="sequencialAuto">Sequencial Automático</option>
+                            <option value="sequencialDigitado">Sequencial Digitado</option>
+                            <option value="criador">Criador</option>
+                            <option value="status">Status</option>
+                            <option value="observacoes">Observações</option>
+                        </select>
+                    </div>
+                    
+                    <div style="flex-grow: 1;">
+                        <label for="termoPesquisa">Termo de Pesquisa:</label>
+                        <input type="text" id="termoPesquisa" onkeyup="aplicarFiltro()" placeholder="Digite para pesquisar em tempo real">
+                    </div>
+                </div>
+
+                <div class="tabela-container">
+                    <table id="tabelaCadastros">
+                        <thead>
+                            <tr>
+                                <th></th> <th>NR</th>
+                                <th>Sequencial Auto</th>
+                                <th>Sequencial Digitado</th>
+                                <th>Criador</th>
+                                <th>Tipo Op.</th>
+                                <th>Status</th>
+                                <th>Data Criação</th>
+                                <th>Observações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpoTabelaCadastros">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="duplicidadeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="fecharModal()">&times;</span>
+            <h2>⚠️ Alerta de Duplicidade Detectada</h2>
+            <p>Já existe um ou mais sequenciais registrados com a(s) seguinte(s) informação(ões):</p>
+            
+            <div id="duplicidadeDetalhes">
+                </div>
+            
+            <p><strong>Deseja seguir com o cadastro mesmo assim?</strong></p>
+            <div class="modal-actions">
+                <button id="modalSim" class="btn-confirmar">SIM, CADASTRAR MESMO ASSIM</button>
+                <button onclick="fecharModal(); dadosPendentesCadastro = null;" class="btn-cancelar">NÃO, CANCELAR</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js" defer></script>
+
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>

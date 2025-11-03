@@ -1,0 +1,250 @@
+/* Estilos Básicos */
+body { font-family: sans-serif; margin: 20px; background-color: #f4f4f4; }
+.container { max-width: 900px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background-color: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+h1 { color: #007bff; }
+
+/* Estilos para input, select e textarea */
+input[type="text"], input[type="number"], select, textarea { 
+    width: 100%; 
+    padding: 8px; 
+    margin-bottom: 10px; 
+    box-sizing: border-box; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+hr { border: 0; height: 1px; background-color: #ddd; margin: 20px 0; }
+
+/* ESTILO DOS BOTÕES E ABAS */
+.tab-buttons { border-bottom: 2px solid #ccc; margin-bottom: 15px; display: flex; }
+.tablink { 
+    padding: 10px 15px; 
+    border: none; 
+    border-bottom: 3px solid transparent; 
+    background-color: #f1f1f1; 
+    cursor: pointer; 
+    transition: 0.3s;
+    margin-right: 5px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.tablink:hover { background-color: #ddd; }
+.tablink.active { border-bottom: 3px solid #007bff; background-color: white; font-weight: bold; }
+.tabcontent { padding: 10px 0; }
+
+/* ESTILO GERAL DE BOTÕES E SEÇÕES */
+button { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 5px; transition: background-color 0.2s;}
+button:hover { background-color: #0056b3; }
+
+.secao { margin-top: 20px; padding-top: 10px; border-top: 1px dashed #eee; }
+h2 { border-bottom: 2px solid #007bff; padding-bottom: 5px; color: #333;}
+
+/* ESTILO ESPECÍFICO PARA CADASTRO RÁPIDO */
+.destaque-cadastro-rapido {
+    background-color: #f0fff0; 
+    padding: 15px;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+}
+.alerta {
+    color: #856404;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+
+/* ESTILO ESPECÍFICO PARA AÇÕES/STATUS */
+.resultado-acao { 
+    border: 1px dashed #ccc; 
+    padding: 15px; 
+    margin-top: 15px; 
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+/* Cores para os status */
+.status-nocqm { color: #cc0000; font-weight: bold; }        
+.status-narecepcao { color: #cc8400; font-weight: bold; }   
+.status-liberado { color: #008000; font-weight: bold; }     
+
+/* Cores dos botões de ação */
+#btnLiberarCQM { background-color: #cc8400; }
+#btnLiberarCQM:hover { background-color: #a36a00; }
+#btnLiberarFinal { background-color: #008000; }
+#btnLiberarFinal:hover { background-color: #006400; }
+#btnCorrigir { background-color: #337ab7; } 
+#btnCorrigir:hover { background-color: #286090; }
+
+
+/* --- ESTILOS PARA TABELA (Lista Geral) --- */
+
+/* ESTILO DO INDICATIVO DE CORREÇÃO */
+.ajustado-icone {
+    color: #337ab7; 
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: help; 
+}
+
+/* ESTILO DA TABELA DE CADASTROS */
+.tabela-container {
+    max-height: 450px; 
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#tabelaCadastros {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; 
+}
+#tabelaCadastros th, #tabelaCadastros td {
+    padding: 10px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#tabelaCadastros th {
+    background-color: #007bff;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+#tabelaCadastros tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
+#tabelaCadastros tr:hover {
+    background-color: #e9e9e9;
+    cursor: pointer;
+}
+
+/* Ajuste de Largura das Colunas - 9 colunas no total */
+#tabelaCadastros th:nth-child(1), #tabelaCadastros td:nth-child(1) { width: 30px; } 
+#tabelaCadastros th:nth-child(2), #tabelaCadastros td:nth-child(2) { width: 40px; } 
+#tabelaCadastros th:nth-child(3), #tabelaCadastros td:nth-child(3) { width: 90px; } 
+#tabelaCadastros th:nth-child(4), #tabelaCadastros td:nth-child(4) { width: 110px; } 
+#tabelaCadastros th:nth-child(5), #tabelaCadastros td:nth-child(5) { width: 90px; } 
+#tabelaCadastros th:nth-child(6), #tabelaCadastros td:nth-child(6) { width: 100px; } 
+#tabelaCadastros th:nth-child(7), #tabelaCadastros td:nth-child(7) { width: 70px; } 
+#tabelaCadastros th:nth-child(8), #tabelaCadastros td:nth-child(8) { width: 90px; } 
+#tabelaCadastros th:nth-child(9), #tabelaCadastros td:nth-child(9) { width: 180px; } 
+
+
+/* --- ESTILOS DO MODAL (POP UP) OTIMIZADOS --- */
+
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed; 
+    z-index: 20; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.7); /* Fundo escuro */
+    /* Centralização com Flexbox */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px; /* Mais padding */
+    border: 1px solid #888;
+    width: 90%; 
+    max-width: 650px; /* Aumentei um pouco o tamanho máximo */
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    position: relative;
+    /* Animação suave para aparecer */
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-content h2 {
+    color: #cc0000;
+    border-bottom: 2px solid #ffcccc;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#duplicidadeDetalhes {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #ffeaea; 
+    border: 1px solid #cc0000;
+    border-radius: 4px;
+    max-height: 250px; /* Aumentei a altura máxima */
+    overflow-y: auto;
+    font-size: 0.9em;
+    margin-bottom: 25px;
+}
+
+.duplicado-item {
+    border-bottom: 1px dashed #f00;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.duplicado-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.duplicado-item ul {
+    list-style: none;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+
+.duplicado-item ul li {
+    line-height: 1.4;
+    color: #333;
+}
+
+.modal-actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.btn-confirmar {
+    background-color: #28a745; 
+}
+.btn-confirmar:hover {
+    background-color: #1e7e34;
+}
+.btn-cancelar {
+    background-color: #dc3545; 
+}
+.btn-cancelar:hover {
+    background-color: #c82333;
+}
